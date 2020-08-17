@@ -21,25 +21,25 @@ $data = $user->viewAllUser();
     <div class="row">
     <div class="col-md-3">
       <div class="card-counter primary">
-        <i class="fa fa-upload"></i>
+        <i class="	fa fa-line-chart"></i>
         <span class="count-numbers">0</span>
-        <span class="count-name">Published</span>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="card-counter danger">
-        <i class="fa fa-clock-o"></i>
-        <span class="count-numbers">0</span>
-        <span class="count-name">Pending</span>
+        <span class="count-name">Views</span>
       </div>
     </div>
 
     <div class="col-md-3">
       <div class="card-counter success">
+        <i class="fa fa-comments"></i>
+        <span class="count-numbers">0</span>
+        <span class="count-name">Comments</span>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-counter danger">
         <i class="fa fa-book"></i>
         <span class="count-numbers">0</span>
-        <span class="count-name">Blogs</span>
+        <span class="count-name">Published</span>
       </div>
     </div>
 

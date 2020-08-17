@@ -6,28 +6,29 @@
             $data = $this->getAllBlogs();
             return $data;
         }
-        public function viewAuthor($id){
-            $data = $this->getAuthor($id);
+
+        public function viewMyBlogs($author_id){
+            $data = $this->getMyBlogs($author_id);
             return $data;
         }
 
-        // public function viewAUser($id){
-        //     $data = $this->getAUser($id);
-        //     return $data;
-        // }
+        public function viewABlog($id){
+            $data = $this->getABlog($id);
+            return $data;
+        }
+  
 
         public function addBlog($data){
             $this->saveBlog($data);
         }
 
-        // public function updateUser($data,$id){
-        //     $this->saveUpdateUser($data,$id);
-        // }
+        public function editBlog($data,$id){
+            $this->saveUpdate($data,$id);
+        }
 
-        // public function deleteUser($deleteId){
-        //     echo $deleteId;
-        //     $this->removeUser($deleteId);
-        // }
+        public function deleteBlog($deleteId){
+            $this->removeBlog($deleteId);
+        }
 
     }
 

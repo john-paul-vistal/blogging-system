@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    $("[data-toggle=tooltip]").tooltip();
+
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("active");
@@ -20,16 +22,8 @@ $(document).ready(function() {
         })
     });
 
-    // function openTab(id) {
-    //     var i;
-    //     var x = document.getElementsByClassName("tabs");
-    //     for (i = 0; i < x.length; i++) {
-    //         x[i].style.display = "none";
-    //     }
-    //     document.getElementById(id).style.display = "block";
-    // }
-
-    var readURL = function(input) {
+    // ADMIN PROFILE IMAGE PICKER
+    var readURLadmin = function(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
@@ -42,10 +36,11 @@ $(document).ready(function() {
     }
 
     $("#imagePicker").on('change', function() {
-        readURL(this);
+        readURLadmin(this);
     });
 
-    var readURL = function(input) {
+    //BLOG IMAGE PICKER
+    var readURLblog = function(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
@@ -58,36 +53,46 @@ $(document).ready(function() {
     }
 
     $("#blog_image").on('change', function() {
-        readURL(this);
+        readURLblog(this);
     });
 
-
+    //SEARCH FOR BLOGS
     $('#searchInput').on('keyup', function() {
-        alert("hello")
-        var filter, card, author, td0, td1, i, txtValue0, txtValue1, ;
-        filter = $("#searchInput:text").val().toUpperCase();
-        // table = document.getElementById("blogRecords");
-        // tr = table.getElementsByTagName("tr");
-        card = $('#blogRecords');
-        console.log(card);
-        author =
-
-            for (i = 0; i < tr.length; i++) {
-                td0 = tr[i].getElementsByClass("td")[0];
-                td1 = tr[i].getElementsByTagName("td")[1];
-
-                if (td0 || td1) {
-                    txtValue0 = td0.textContent || td0.innerText;
-                    txtValue1 = td1.textContent || td1.innerText;
-                    if (txtValue0.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else if (txtValue1.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
+        var input, filter, cards, cardContainer, title, i;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        cardContainer = document.getElementById("blogRecords");
+        cards = cardContainer.getElementsByClassName("blog");
+        for (i = 0; i < cards.length; i++) {
+            title = cards[i].querySelector(".card-content h5.title");
+            if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+                $(cards[i]).parent().fadeIn("slow");
+                $(cards[i]).parent().css('display', 'block')
+            } else {
+                $(cards[i]).parent().fadeOut("slow");
+                $(cards[i]).parent().css('display', 'none')
             }
+        }
+
+    });
+    //SEARCH FOR ADMINS
+    $('#searchAdmin').on('keyup', function() {
+        var input, filter, cards, cardContainer, name, i;
+        input = document.getElementById("searchAdmin");
+        filter = input.value.toUpperCase();
+        cardContainer = document.getElementById("adminRecords");
+        cards = cardContainer.getElementsByClassName("admins");
+        for (i = 0; i < cards.length; i++) {
+            name = cards[i].querySelector(".card-body h4.name");
+            if (name.innerText.toUpperCase().indexOf(filter) > -1) {
+                $(cards[i]).parent().fadeIn("slow");
+                $(cards[i]).parent().css('display', 'block')
+            } else {
+                $(cards[i]).parent().fadeOut("slow");
+                $(cards[i]).parent().css('display', 'none')
+            }
+        }
+
     });
 
 

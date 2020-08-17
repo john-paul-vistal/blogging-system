@@ -38,7 +38,7 @@ if(isset($_POST['updateUser'])){
 <div id="page-content-wrapper">
     <div class="d-flex justify-content-between mx-4">
         <h4>ADMIN DETAILS</h4>
-        <a href="manage-user.php"> <button class="btn btn-lg rounded-circle w3-blue p-3"><i class="fa fa-arrow-left"></i></button></a>
+        <a data-placement="top" data-toggle="tooltip" title="Back" href="manage-user.php"> <button class="btn btn-lg rounded-circle w3-blue p-3"><i class="fa fa-arrow-left"></i></button></a>
     </div>
     <div class="container mt-4">
     <form action="user-info.php" method="POST">
