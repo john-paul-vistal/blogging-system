@@ -62,7 +62,7 @@ if(isset($_POST['delete'])){
                                     <input name="id" type="hidden" value="<?php echo $blog['id']?>">
                                     <button name="delete" data-placement="top" data-toggle="tooltip" title="Delete" class="p-2 btn-danger rounded-circle fa fa-trash w3-large"></button>
                                     <a href="edit-blog.php?id=<?php echo $blog['id']?>" data-placement="top" data-toggle="tooltip" title="Edit" class="p-2 btn-warning rounded-circle fa fa-edit w3-large"></a>
-                                    <a href="view.html" data-placement="top" data-toggle="tooltip" title="View" class="p-2 btn-success rounded-circle fa fa-eye w3-large"></a>
+                                    <a href="view.php?viewid=<?php echo $blog['id']?>" data-placement="top" data-toggle="tooltip" title="View" class="p-2 btn-success rounded-circle fa fa-eye w3-large"></a>
                                     <?php
                                      if($_SESSION['adminLevel'] == "Admin"||$_SESSION['adminLevel'] == "Super Admin"){
                                         echo '<p data-placement="top" data-toggle="tooltip" title="Publish" class="p-2 btn-info rounded-circle fa fa-upload w3-large"></p>';
