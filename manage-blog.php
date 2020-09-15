@@ -15,6 +15,13 @@ if(isset($_POST['delete'])){
     header('Location:manage-blog.php');
 }
 
+if(isset($_POST['publish'])){
+    $date = date("Y-m-d");
+    $blogaction->publish($date,$_POST['id']);
+    unset($_POST['publish']);
+    header('Location:manage-blog.php');
+}
+
 
 ?>
 <html>
@@ -53,6 +60,8 @@ if(isset($_POST['delete'])){
                             echo '<p>No Blogs Yet</p>';
                             else:
                             foreach($blogs as $blog):
+                                if($blog['pub_stat'] != 1):
+                                   
                         ?>
                         <div  class="col-md-4">
                             <div  class="card-counter user-info w3-deep-purple rounded blog" style="width:310px;height:400px">
@@ -65,7 +74,7 @@ if(isset($_POST['delete'])){
                                     <a href="view.php?viewid=<?php echo $blog['id']?>" data-placement="top" data-toggle="tooltip" title="View" class="p-2 btn-success rounded-circle fa fa-eye w3-large"></a>
                                     <?php
                                      if($_SESSION['adminLevel'] == "Admin"||$_SESSION['adminLevel'] == "Super Admin"){
-                                        echo '<p data-placement="top" data-toggle="tooltip" title="Publish" class="p-2 btn-info rounded-circle fa fa-upload w3-large"></p>';
+                                        echo '<button name="publish" data-placement="top" data-toggle="tooltip" title="Publish" class="p-2 btn-info rounded-circle fa fa-upload w3-large"></button>';
                                     }
                                     ?>
                                 </form>
@@ -87,7 +96,7 @@ if(isset($_POST['delete'])){
                             </div>
                         </div>
                         
-                    <?php endforeach; endif ?>
+                    <?php endif;endforeach; endif ?>
                     </div>
                 </div>
             </div>

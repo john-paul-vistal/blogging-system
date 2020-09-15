@@ -60,6 +60,10 @@
             $sql = "UPDATE  blogs SET title = '$title',topic = '$topic',content = '$content',img = '$img' WHERE id = $id";
            $this->connect()->query($sql);
         }
+        protected function savePublish($date,$id){
+            $sql = "UPDATE  blogs SET pub_stat = 1,pub_date = '$date' WHERE id = $id";
+           $this->connect()->query($sql);
+        }
 
     }
 

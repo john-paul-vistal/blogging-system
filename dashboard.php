@@ -2,9 +2,13 @@
 include 'include/dataBase.php';
 include 'include/user-query.php';
 include 'include/user-action.php';
+include 'include/blog-query.php';
+include 'include/blog-action.php';
 $user = new UserAction();
+$blogs = new BlogAction();
 
 $data = $user->viewAllUser();
+$blogData = $blogs->viewAllBlogs();
 ?>
 <html lang="en">
 <head>
@@ -38,7 +42,17 @@ $data = $user->viewAllUser();
     <div class="col-md-3">
       <div class="card-counter danger">
         <i class="fa fa-book"></i>
-        <span class="count-numbers">0</span>
+        <span class="count-numbers">
+        <?php
+        $count = 0;
+         foreach($blogData as $blog){
+          if($blog['pub_stat'] == 1){
+            $count++;
+          }
+        }
+        echo $count;
+        ?>
+        </span>
         <span class="count-name">Published</span>
       </div>
     </div>

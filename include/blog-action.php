@@ -26,6 +26,10 @@
             $this->saveUpdate($data,$id);
         }
 
+        public function publish($date,$id){
+            $this->savePublish($date,$id);
+        }
+
         public function deleteBlog($deleteId){
             $this->removeBlog($deleteId);
         }
